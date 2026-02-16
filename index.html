@@ -4,12 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Meroxa — Secure Excellence. Delivered.</title>
-  <meta name="description" content="Cybersecurity, software development and IT consulting. Enterprise-grade delivery by Meroxa." />
+  <title>MEROXA — Secure Excellence. Delivered.</title>
+  <meta name="description" content="Meroxa delivers cybersecurity, software development and IT consulting with enterprise-grade execution." />
 
-  <!-- Favicon -->
+  <!-- Favicon (optional) -->
   <link rel="icon" href="assets/favicon.ico">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
   <style>
     :root{
@@ -22,6 +21,11 @@
       --shadow:0 28px 90px rgba(0,0,0,.55);
       --radius:22px;
       --max:1160px;
+
+      /* Luxury palette */
+      --blue1:#0B2A66;
+      --blue2:#1546A8;
+      --blue3:#2AA8FF;
       --p1:#6EE7FF;
       --p2:#A78BFA;
       --gold:#D8C08A;
@@ -34,7 +38,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 15% -10%, rgba(110,231,255,.14), transparent 55%),
+        radial-gradient(1200px 700px at 15% -10%, rgba(110,231,255,.13), transparent 55%),
         radial-gradient(1000px 600px at 85% 0%, rgba(167,139,250,.12), transparent 55%),
         radial-gradient(900px 500px at 50% 110%, rgba(216,192,138,.06), transparent 60%),
         var(--bg);
@@ -46,15 +50,13 @@
     .muted{color:var(--muted)}
     .small{font-size:13px;color:var(--muted)}
 
+    /* Header */
     header{
-      position:sticky;
-      top:0;
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(14px);
-      background: rgba(6,8,18,.65);
+      background: rgba(6,8,18,.68);
       border-bottom:1px solid var(--border);
-      z-index:50;
     }
-
     .nav{
       display:flex;
       align-items:center;
@@ -62,188 +64,584 @@
       gap:12px;
     }
 
-    .brand-mark{
-      height:36px;
-      width:36px;
-      object-fit:contain;
-      display:block;
-      filter: drop-shadow(0 10px 30px rgba(0,0,0,.5));
+    /* Wordmark */
+    .wordmark{
+      font-weight:1000;
+      letter-spacing: 2px;
+      font-size: 18px;
+      text-transform: uppercase;
+
+      background: linear-gradient(135deg, #0a2c6f 0%, #0f3b93 40%, #2aa8ff 100%);
+      -webkit-background-clip: text;
+      background-clip:text;
+      color:transparent;
+
+      text-shadow:
+        0 18px 60px rgba(42,168,255,.12),
+        0 10px 35px rgba(0,0,0,.45);
+    }
+    .wordmark .dot{
+      display:inline-block;
+      width:7px; height:7px;
+      border-radius:999px;
+      margin-left:10px;
+      vertical-align:middle;
+      background: linear-gradient(135deg, var(--gold), rgba(216,192,138,.35));
+      box-shadow: 0 10px 30px rgba(216,192,138,.18);
     }
 
     nav.links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
+      display:flex; gap:14px; flex-wrap:wrap;
     }
-
     nav.links a{
-      font-weight:700;
-      color:var(--muted);
+      font-weight:800;
+      color:rgba(160,171,187,.98);
       padding:10px 12px;
-      border-radius:12px;
+      border-radius:14px;
     }
-
-    nav.links a:hover{
-      background:rgba(255,255,255,.06);
-      color:var(--text);
-    }
+    nav.links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
 
     .btn{
+      display:inline-flex; align-items:center; justify-content:center;
       padding:12px 16px;
-      border-radius:14px;
-      font-weight:800;
+      border-radius:16px;
+      font-weight:900;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.06);
       cursor:pointer;
-      transition:.2s ease;
+      transition: transform .15s ease, background .15s ease;
     }
-
-    .btn:hover{transform:translateY(-2px)}
-
+    .btn:hover{transform:translateY(-1px)}
     .btn.primary{
       border:none;
       background:linear-gradient(135deg,var(--p1),var(--p2));
       color:#07101b;
     }
 
-    h1{
-      font-size:56px;
-      margin:0;
-      line-height:1.05;
+    /* Sections */
+    section{padding:18px 0}
+    .card{
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      background:linear-gradient(180deg,var(--card1),var(--card2));
+      box-shadow:var(--shadow);
+      padding:22px;
     }
 
-    @media(max-width:768px){
-      h1{font-size:40px}
+    /* Hero */
+    .hero{padding:26px 0 10px}
+    .heroGrid{
+      display:grid; gap:16px;
+      grid-template-columns: 1.25fr .75fr;
+      align-items:stretch;
+    }
+    @media(max-width:980px){
+      header{position:relative}
+      .heroGrid{grid-template-columns:1fr}
       nav.links{display:none}
     }
 
-    .hero{
-      padding:60px 0;
-      text-align:center;
+    .heroVisual{
+      position:relative; overflow:hidden;
+      padding:0; min-height: 460px;
+    }
+    .heroVisual::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(120deg, rgba(6,8,18,.86), rgba(6,8,18,.55)),
+        url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+      transform: scale(1.02);
+      filter:saturate(1.08);
+    }
+    .heroContent{
+      position:relative;
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
     }
 
-    .hero p{
-      max-width:700px;
-      margin:20px auto;
-      font-size:18px;
-      color:var(--muted);
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      font-weight:900;
+      width: fit-content;
+    }
+    .badge .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--p1), var(--p2));
     }
 
-    section{padding:50px 0}
-
-    .grid{
-      display:grid;
-      gap:20px;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    .luxLine{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(216,192,138,.55), transparent);
+      margin: 8px 0 2px;
     }
 
-    .card{
-      padding:24px;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg,var(--card1),var(--card2));
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
+    h1{
+      margin:0;
+      font-size:54px;
+      line-height:1.04;
+      letter-spacing:-.8px;
+    }
+    @media(max-width:560px){h1{font-size:40px}}
+
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px}
+
+    .pillRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .pill{
+      font-size:13px; font-weight:900;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(236,242,255,.92);
     }
 
-    .card h3{margin-top:0}
+    /* Grids */
+    .titleRow{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:12px}
+    h2{margin:0; font-size:28px; letter-spacing:-.3px}
+    .grid3{display:grid; gap:14px; grid-template-columns: repeat(3,1fr)}
+    .grid2{display:grid; gap:14px; grid-template-columns: 1fr 1fr}
+    @media(max-width:980px){.grid3,.grid2{grid-template-columns:1fr}}
+
+    .media{
+      height:150px; border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background-size:cover; background-position:center;
+      position:relative; overflow:hidden;
+    }
+    .media::after{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(6,8,18,.10), rgba(6,8,18,.82));
+    }
+
+    .list{margin:12px 0 0; padding:0; list-style:none; color:var(--muted)}
+    .list li{padding:8px 0; border-bottom:1px dashed rgba(255,255,255,.12)}
+    .list li:last-child{border-bottom:none}
+
+    /* Stats */
+    .stat{
+      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(10,14,24,.55);
+    }
+    .stat b{display:block; font-size:18px}
+    .stat span{display:block; margin-top:4px; font-size:12px; color:var(--muted)}
+
+    /* Testimonials */
+    .quote{
+      position:relative;
+      padding-top:18px;
+    }
+    .quote::before{
+      content:"“";
+      position:absolute;
+      top:-8px; left:2px;
+      font-size:46px;
+      color:rgba(216,192,138,.55);
+    }
+
+    /* FAQ */
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:14px 14px;
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:900;
+      color:rgba(236,242,255,.95);
+      list-style:none;
+    }
+    details summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color:var(--muted)}
+
+    /* Contact */
+    label{display:block; font-weight:900; font-size:13px; color:rgba(236,242,255,.92); margin:10px 0 6px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,14,24,.60);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(110,231,255,.55)}
+
+    /* Reveal animation (light) */
+    .reveal{
+      opacity:0;
+      transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Back to top button */
+    .toTop{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      opacity:0;
+      pointer-events:none;
+      transform: translateY(8px);
+      transition:.2s ease;
+    }
+    .toTop.show{
+      opacity:1;
+      pointer-events:auto;
+      transform: translateY(0);
+    }
 
     footer{
+      padding:28px 0 44px;
       border-top:1px solid var(--border);
-      padding:30px 0;
-      text-align:center;
       color:var(--muted);
+      margin-top: 6px;
     }
-
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="wordmark" aria-label="Meroxa Home">MEROXA<span class="dot"></span></a>
 
-<header>
-  <div class="wrap nav">
-    <a href="#top">
-      <img src="assets/meroxa-mark.png" class="brand-mark" alt="Meroxa Logo">
-    </a>
+      <nav class="links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#proof">Proof</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/meroxa-sarl-43b1a03b1" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
 
-    <nav class="links">
-      <a href="#services">Services</a>
-      <a href="#approach">Approach</a>
-      <a href="#contact">Contact</a>
-      <a href="https://www.linkedin.com/in/meroxa-sarl-43b1a03b1" target="_blank">LinkedIn</a>
-    </nav>
-
-    <a href="#contact" class="btn primary">Get in touch</a>
-  </div>
-</header>
-
-<main id="top" class="wrap">
-
-  <section class="hero">
-    <h1>Secure Excellence. Delivered.</h1>
-    <p>
-      Enterprise-grade cybersecurity, software engineering, consulting, and IT delivery.
-      We design, secure, build, and operate modern infrastructures.
-    </p>
-    <a href="#contact" class="btn primary">Request a Quote</a>
-  </section>
-
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="grid">
-
-      <div class="card">
-        <h3>Cybersecurity</h3>
-        <p>Zero Trust architecture, SASE/ZTNA, cloud security, governance and risk reduction strategies.</p>
-      </div>
-
-      <div class="card">
-        <h3>Software Development</h3>
-        <p>Web applications, APIs, integrations, automation and CI/CD support.</p>
-      </div>
-
-      <div class="card">
-        <h3>Consulting & Delivery</h3>
-        <p>Strategy, architecture review, POCs, operational readiness and enterprise integration.</p>
-      </div>
-
+      <a class="btn primary" href="#contact">Get in touch</a>
     </div>
-  </section>
+  </header>
 
-  <section id="approach">
-    <h2>Our Approach</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Discover</h3>
-        <p>Understand objectives, risks, and constraints.</p>
+  <main id="top" class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroGrid">
+
+        <div class="card heroVisual reveal">
+          <div class="heroContent">
+            <div class="badge"><span class="dot"></span> Secure Excellence. Delivered.</div>
+            <div class="luxLine"></div>
+
+            <h1>Cybersecurity & IT delivery, built for enterprise.</h1>
+            <p class="muted" style="margin:0; font-size:18px; max-width: 60ch;">
+              We secure access, build reliable software, integrate platforms, and run operations —
+              with senior expertise and clear outcomes.
+            </p>
+
+            <div class="cta">
+              <a class="btn primary" href="#contact">Request a quote</a>
+              <a class="btn" href="#services">Explore services</a>
+            </div>
+
+            <div class="pillRow">
+              <span class="pill">Zero Trust</span>
+              <span class="pill">SASE / ZTNA</span>
+              <span class="pill">Cloud Security</span>
+              <span class="pill">Development</span>
+              <span class="pill">Integration</span>
+              <span class="pill">Support</span>
+            </div>
+
+            <div class="small">Hero image: Unsplash (free)</div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h2 style="font-size:22px; margin:0 0 8px;">What we do</h2>
+          <p class="muted" style="margin:0 0 10px;">Practical, senior-level execution.</p>
+
+          <ul class="list">
+            <li><b>Security</b> — Zero Trust, SASE / ZTNA programs, cloud hardening</li>
+            <li><b>Engineering</b> — Web apps, APIs, automation, integrations</li>
+            <li><b>Consulting</b> — Strategy, assessments, architecture reviews, POCs</li>
+            <li><b>Operations</b> — L2/L3 support, runbooks, optimization</li>
+            <li><b>Pre-sales</b> — Workshops, demos, technical documentation</li>
+          </ul>
+
+          <div class="luxLine"></div>
+
+          <div class="grid2" style="margin-top:12px">
+            <div class="stat">
+              <b>Fast delivery</b>
+              <span>Focused, outcome-driven engagements</span>
+            </div>
+            <div class="stat">
+              <b>Security-first</b>
+              <span>Best practices by default</span>
+            </div>
+            <div class="stat">
+              <b>Clear communication</b>
+              <span>No surprises, no jargon</span>
+            </div>
+            <div class="stat">
+              <b>Flexible</b>
+              <span>Project or retainer</span>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="card">
-        <h3>Design</h3>
-        <p>Architecture, governance, and security-by-design planning.</p>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="titleRow">
+        <h2>Services</h2>
+        <p class="muted" style="margin:0;">End-to-end delivery for modern IT.</p>
       </div>
-      <div class="card">
-        <h3>Deliver</h3>
-        <p>Execution, documentation, and measurable outcomes.</p>
+
+      <div class="grid3">
+        <div class="card reveal">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=80');"></div>
+          <h2 style="font-size:22px; margin:12px 0 6px;">Cybersecurity</h2>
+          <p class="muted" style="margin:0;">Secure access, reduce risk, and harden environments.</p>
+          <ul class="list">
+            <li>Security assessments & gap analysis</li>
+            <li>Zero Trust architecture</li>
+            <li>SASE / ZTNA deployment programs</li>
+            <li>Cloud security & hardening</li>
+            <li>Policies, standards, governance</li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80');"></div>
+          <h2 style="font-size:22px; margin:12px 0 6px;">Software Development</h2>
+          <p class="muted" style="margin:0;">Build reliable applications and integrations that scale.</p>
+          <ul class="list">
+            <li>Web applications & portals</li>
+            <li>APIs, microservices</li>
+            <li>Automation (scripts, workflows)</li>
+            <li>System integration</li>
+            <li>Testing, CI/CD support</li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80');"></div>
+          <h2 style="font-size:22px; margin:12px 0 6px;">Consulting & Delivery</h2>
+          <p class="muted" style="margin:0;">From strategy to execution, measurable outcomes.</p>
+          <ul class="list">
+            <li>IT strategy & roadmaps</li>
+            <li>Architecture reviews</li>
+            <li>POCs and success criteria</li>
+            <li>Operational readiness</li>
+            <li>Documentation & handover</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email us at: <strong>contact@meroxa.com</strong></p>
-      <p>Or connect via LinkedIn for business inquiries.</p>
-    </div>
-  </section>
+      <div class="small" style="margin-top:10px;">Photos: Unsplash (free)</div>
+    </section>
 
-</main>
+    <!-- APPROACH -->
+    <section id="approach">
+      <div class="titleRow">
+        <h2>Approach</h2>
+        <p class="muted" style="margin:0;">A method designed for enterprise delivery.</p>
+      </div>
 
-<footer>
-  © <span id="year"></span> Meroxa. All rights reserved.
-</footer>
+      <div class="grid2">
+        <div class="card reveal">
+          <h2 style="font-size:22px; margin:0 0 8px;">How we work</h2>
+          <ul class="list">
+            <li><b>Discover</b> — objectives, risks, constraints, success criteria</li>
+            <li><b>Design</b> — target architecture, plan, and governance</li>
+            <li><b>Deliver</b> — implementation, validation, documentation</li>
+            <li><b>Operate</b> — optimization, support, continuous improvement</li>
+          </ul>
+        </div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+        <div class="card reveal">
+          <h2 style="font-size:22px; margin:0 0 8px;">What you get</h2>
+          <ul class="list">
+            <li><b>Clarity</b> — simple plan, clear milestones, visible progress</li>
+            <li><b>Speed</b> — quick onboarding, efficient execution</li>
+            <li><b>Quality</b> — robust, maintainable, secure-by-design work</li>
+            <li><b>Ownership</b> — outcome-driven delivery</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <!-- PROOF -->
+    <section id="proof">
+      <div class="titleRow">
+        <h2>Proof of delivery</h2>
+        <p class="muted" style="margin:0;">Professional, believable, “big-company” signals.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card reveal">
+          <h2 style="font-size:22px; margin:0 0 8px;">Trusted mindset</h2>
+          <p class="muted" style="margin:0 0 10px;">Replace with real client logos when ready.</p>
+          <div class="pillRow">
+            <span class="pill">Enterprise</span>
+            <span class="pill">Cloud</span>
+            <span class="pill">Security</span>
+            <span class="pill">SaaS</span>
+            <span class="pill">Industrial</span>
+          </div>
+          <div class="luxLine"></div>
+          <p class="small" style="margin:0;">Add: certifications, partner badges, and case studies when available.</p>
+        </div>
+
+        <div class="card reveal">
+          <h2 style="font-size:22px; margin:0 0 8px;">Testimonials</h2>
+
+          <div class="quote">
+            <p class="muted" style="margin:0;">
+              Meroxa delivered a security-first architecture with clear milestones and strong documentation.
+            </p>
+            <p class="small" style="margin:10px 0 0;"><b>IT Manager</b> — Enterprise environment</p>
+          </div>
+
+          <div class="luxLine"></div>
+
+          <div class="quote">
+            <p class="muted" style="margin:0;">
+              Fast execution, clean engineering, and great communication — exactly what we needed.
+            </p>
+            <p class="small" style="margin:10px 0 0;"><b>Head of Engineering</b> — SaaS platform</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="titleRow">
+        <h2>FAQ</h2>
+        <p class="muted" style="margin:0;">Quick answers for decision-makers.</p>
+      </div>
+
+      <div class="grid2">
+        <details class="reveal">
+          <summary>What engagement models do you offer?</summary>
+          <p>Project-based delivery, POCs, or retainer support (monthly). We adapt to your governance and timelines.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>Can you work with enterprise constraints?</summary>
+          <p>Yes. We operate with documentation-first practices, clear milestones, and security-by-design standards.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>Do you provide support and runbooks?</summary>
+          <p>Yes. We deliver operational documentation, runbooks, handover sessions, and L2/L3 support when needed.</p>
+        </details>
+
+        <details class="reveal">
+          <summary>How fast can you start?</summary>
+          <p>Typically within days. We begin with a short discovery call and define scope + success criteria.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="titleRow">
+        <h2>Contact</h2>
+        <p class="muted" style="margin:0;">Tell us what you need — we’ll reply quickly.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card reveal">
+          <!-- Replace the email if needed -->
+          <form action="mailto:contact@meroxa.com" method="post" enctype="text/plain">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+
+            <label for="company">Company (optional)</label>
+            <input id="company" name="company" placeholder="Company name" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Briefly describe your project or need..." required></textarea>
+
+            <div class="cta">
+              <button class="btn primary" type="submit">Send</button>
+              <a class="btn" href="https://www.linkedin.com/in/meroxa-sarl-43b1a03b1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+
+            <p class="small" style="margin-top:10px;">
+              Replace <b>contact@meroxa.com</b> with your real business email.
+            </p>
+          </form>
+        </div>
+
+        <div class="card reveal">
+          <h2 style="font-size:22px; margin:0 0 8px;">Business info</h2>
+          <ul class="list">
+            <li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/meroxa-sarl-43b1a03b1" target="_blank" rel="noopener">Meroxa SARL</a></li>
+            <li><b>Engagements:</b> Project-based or retainer</li>
+            <li><b>Availability:</b> Mon–Fri</li>
+            <li><b>Delivery:</b> Remote / On-site (as needed)</li>
+          </ul>
+
+          <div class="luxLine"></div>
+          <p class="muted" style="margin:0;">
+            Want an even more corporate finish? Add a custom domain, a real form backend, and analytics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="wrap">
+      <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+        <div>© <span id="y"></span> MEROXA. All rights reserved.</div>
+        <div class="small"><a href="#top">Back to top</a></div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Back to top floating button -->
+  <a href="#top" class="btn toTop" id="toTop">↑ Top</a>
+
+  <script>
+    // Year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add("show");
+      });
+    }, {threshold: 0.12});
+    revealEls.forEach(el => io.observe(el));
+
+    // Back to top button
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 700) toTop.classList.add("show");
+      else toTop.classList.remove("show");
+    });
+  </script>
 </body>
 </html>
