@@ -6,112 +6,291 @@
   <meta name="description" content="Meroxa provides IT services: development, cybersecurity, consulting, integration, support, and pre-sales." />
   <title>Meroxa — IT Services & Cybersecurity</title>
 
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
     :root{
-      --bg:#0b0f19; --card:#11182a; --muted:#9aa4b2; --text:#e9eef6;
-      --primary:#6ee7ff; --primary2:#a78bfa; --border:rgba(255,255,255,.08);
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius:18px;
+      --bg:#0b0f19;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --text:#eaf0fb;
+      --muted:#9aa4b2;
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --radius:20px;
       --max:1120px;
+      --p1:#6ee7ff;
+      --p2:#a78bfa;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(110,231,255,.12), transparent 55%),
-                  radial-gradient(1000px 500px at 80% 10%, rgba(167,139,250,.12), transparent 55%),
-                  var(--bg);
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
-      line-height:1.5;
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(110,231,255,.15), transparent 55%),
+        radial-gradient(1000px 600px at 85% 0%, rgba(167,139,250,.14), transparent 55%),
+        radial-gradient(900px 500px at 50% 110%, rgba(110,231,255,.08), transparent 60%),
+        var(--bg);
+      line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px; color:var(--muted)}
+
+    /* Top nav */
     header{
-      position:sticky; top:0; backdrop-filter: blur(12px);
-      background: rgba(11,15,25,.55); border-bottom:1px solid var(--border);
-      z-index:10;
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,15,25,.55);
+      border-bottom: 1px solid var(--border);
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.4px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .brand{display:flex; gap:12px; align-items:center; font-weight:900; letter-spacing:.2px}
     .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, var(--primary), var(--primary2));
-      box-shadow: 0 10px 30px rgba(110,231,255,.12);
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      box-shadow: 0 12px 40px rgba(110,231,255,.12);
     }
-    .links{display:flex; gap:14px; flex-wrap:wrap}
-    .links a{color:var(--muted); font-weight:600; padding:10px 10px; border-radius:12px}
-    .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .links{display:flex; gap:10px; flex-wrap:wrap}
+    .links a{
+      color:rgba(154,164,178,.95); font-weight:700;
+      padding:10px 12px; border-radius:14px;
+    }
+    .links a:hover{background: rgba(255,255,255,.06); color:var(--text)}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 16px; border-radius:14px; font-weight:800;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px; border-radius:16px; font-weight:900;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
-    }
-    .btn.primary{
-      border:none;
-      background: linear-gradient(135deg, var(--primary), var(--primary2));
-      color:#06101b;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
     }
     .btn:hover{transform: translateY(-1px)}
-    .hero{padding:54px 0 18px}
-    .hero-grid{display:grid; gap:22px; grid-template-columns: 1.2fr .8fr; align-items:stretch}
-    @media (max-width: 900px){ .hero-grid{grid-template-columns:1fr} header{position:relative} }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:24px;
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      color:#06101b;
     }
-    h1{font-size:48px; margin:0 0 10px; letter-spacing:-.6px}
-    @media (max-width: 520px){ h1{font-size:38px} }
-    .sub{color:var(--muted); font-size:18px; margin:0 0 18px}
-    .pillrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+
+    /* Cards */
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+
+    /* Hero */
+    .hero{padding:26px 0 10px}
+    .heroGrid{
+      display:grid; gap:16px;
+      grid-template-columns: 1.35fr .65fr;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      header{position:relative}
+    }
+
+    .heroVisual{
+      position:relative;
+      overflow:hidden;
+      padding:0;
+      min-height: 420px;
+    }
+    .heroVisual::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(120deg, rgba(11,15,25,.78), rgba(11,15,25,.55)),
+        url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80");
+      background-size:cover;
+      background-position:center;
+      transform: scale(1.02);
+      filter: saturate(1.05);
+    }
+    .heroContent{
+      position:relative;
+      padding:26px;
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      font-weight:900;
+      width: fit-content;
+    }
+    .badge .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      box-shadow: 0 10px 25px rgba(110,231,255,.20);
+    }
+    h1{
+      margin:0;
+      font-size:52px;
+      line-height:1.05;
+      letter-spacing: -0.8px;
+    }
+    @media (max-width: 560px){ h1{font-size:40px} }
+
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px}
+    .pillRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
     .pill{
-      font-size:13px; font-weight:800; color:rgba(233,238,246,.9);
+      font-size:13px; font-weight:900;
       padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(233,240,251,.92);
+    }
+
+    .sideCard h3{margin:0 0 10px}
+    .sideList{list-style:none; padding:0; margin:10px 0 0}
+    .sideList li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 0;
+      border-bottom:1px dashed rgba(255,255,255,.12);
+    }
+    .sideList li:last-child{border-bottom:none}
+    .iconBox{
+      width:34px; height:34px;
+      border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      flex: 0 0 auto;
+    }
+    .kpis{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr 1fr;
+      margin-top:14px;
+    }
+    .kpi{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(12,16,28,.55);
+    }
+    .kpi b{display:block; font-size:16px}
+    .kpi span{font-size:12px; color:var(--muted)}
+
+    /* Sections */
+    section{padding:18px 0}
+    .titleRow{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      margin-bottom:12px;
+    }
+    h2{margin:0; font-size:28px; letter-spacing:-.3px}
+    .grid3{display:grid; gap:14px; grid-template-columns: repeat(3, 1fr)}
+    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
+
+    .serviceCard h3{margin:10px 0 6px}
+    .serviceCard p{margin:0; color:var(--muted)}
+    .serviceMedia{
+      height:140px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background-size:cover;
+      background-position:center;
+      overflow:hidden;
+      position:relative;
+    }
+    .serviceMedia::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,15,25,.15), rgba(11,15,25,.75));
+    }
+
+    .list{margin:12px 0 0; padding:0; list-style:none; color:var(--muted)}
+    .list li{padding:7px 0; border-bottom:1px dashed rgba(255,255,255,.12)}
+    .list li:last-child{border-bottom:none}
+
+    /* Trust row */
+    .trust{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      opacity:.95;
+    }
+    .logoChip{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      font-weight:900;
+      color: rgba(233,240,251,.85);
+    }
+
+    /* Cases */
+    .cases{display:grid; gap:14px; grid-template-columns: 1fr 1fr}
+    @media (max-width: 980px){ .cases{grid-template-columns:1fr} }
+    .caseCard{padding:0; overflow:hidden}
+    .caseTop{
+      height:180px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+    .caseTop::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,15,25,.12), rgba(11,15,25,.85));
+    }
+    .caseBody{padding:18px 20px 20px}
+    .tagRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .tag{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
+      color: rgba(233,240,251,.85);
+      font-weight:900;
     }
-    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-    .kpis{display:grid; gap:12px; grid-template-columns:1fr 1fr; margin-top:14px}
-    .kpi{padding:14px; border-radius:16px; border:1px solid var(--border); background: rgba(17,24,42,.65)}
-    .kpi b{font-size:18px}
-    section{padding:22px 0}
-    .section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:14px}
-    .section-title h2{margin:0; font-size:26px}
-    .section-title p{margin:0; color:var(--muted)}
-    .grid{display:grid; gap:14px; grid-template-columns: repeat(3, 1fr)}
-    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
-    .service h3{margin:0 0 6px}
-    .service p{margin:0; color:var(--muted)}
-    .list{margin:12px 0 0; padding:0; list-style:none; color:var(--muted)}
-    .list li{padding:7px 0; border-bottom:1px dashed rgba(255,255,255,.10)}
-    .list li:last-child{border-bottom:none}
+
+    /* About split */
     .split{display:grid; gap:14px; grid-template-columns: 1fr 1fr}
-    @media (max-width: 900px){ .split{grid-template-columns:1fr} }
-    .contact{
-      display:grid; gap:14px; grid-template-columns: 1.1fr .9fr; align-items:stretch
+    @media (max-width: 980px){ .split{grid-template-columns:1fr} }
+    .aboutMedia{
+      height:240px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(120deg, rgba(11,15,25,.30), rgba(11,15,25,.70)),
+        url("https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1600&q=80");
+      background-size:cover;
+      background-position:center;
     }
-    @media (max-width: 900px){ .contact{grid-template-columns:1fr} }
-    label{display:block; font-weight:700; font-size:13px; color:rgba(233,238,246,.9); margin:10px 0 6px}
+
+    /* Contact */
+    .contact{display:grid; gap:14px; grid-template-columns: 1.1fr .9fr}
+    @media (max-width: 980px){ .contact{grid-template-columns:1fr} }
+    label{display:block; font-weight:900; font-size:13px; color:rgba(233,240,251,.92); margin:10px 0 6px}
     input, textarea{
-      width:100%; padding:12px 12px; border-radius:14px;
+      width:100%;
+      padding:12px 12px;
+      border-radius:16px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(10,14,24,.6);
+      background: rgba(10,14,24,.60);
       color:var(--text);
       outline:none;
     }
     textarea{min-height:120px; resize:vertical}
     input:focus, textarea:focus{border-color: rgba(110,231,255,.55)}
-    footer{padding:28px 0 44px; color:var(--muted); border-top:1px solid var(--border)}
-    .small{font-size:13px; color:var(--muted)}
-    .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:10px 12px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color:rgba(233,238,246,.9);
-      font-weight:800;
+
+    footer{
+      padding:28px 0 44px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      margin-top: 8px;
     }
   </style>
 </head>
@@ -126,71 +305,121 @@
 
       <nav class="links" aria-label="Primary">
         <a href="#services">Services</a>
+        <a href="#cases">Case studies</a>
         <a href="#about">About</a>
-        <a href="#why">Why Meroxa</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn primary" href="#contact">
+        <i data-lucide="mail" style="width:18px;height:18px"></i>
+        Get in touch
+      </a>
     </div>
   </header>
 
   <main id="top" class="wrap">
+
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-grid">
-        <div class="card">
-          <span class="badge">IT Services • Cybersecurity • Consulting</span>
-          <h1>Secure, build, and scale your IT.</h1>
-          <p class="sub">
-            Meroxa delivers practical IT outcomes: software development, security, integration,
-            support, and technical pre-sales — with a focus on reliability and speed.
-          </p>
+      <div class="heroGrid">
 
-          <div class="cta">
-            <a class="btn primary" href="#contact">Request a quote</a>
-            <a class="btn" href="#services">Explore services</a>
-          </div>
+        <div class="card heroVisual">
+          <div class="heroContent">
+            <div class="badge"><span class="dot"></span> IT Services • Cybersecurity • Consulting</div>
 
-          <div class="pillrow" aria-label="Capabilities">
-            <span class="pill">Development</span>
-            <span class="pill">Cybersecurity</span>
-            <span class="pill">Consulting</span>
-            <span class="pill">Integration</span>
-            <span class="pill">Support</span>
-            <span class="pill">Pre-sales</span>
+            <h1>Enterprise-grade delivery, security-first.</h1>
+            <p class="muted" style="margin:0; font-size:18px; max-width: 52ch;">
+              Meroxa helps teams ship software, strengthen security, and integrate platforms —
+              with fast execution, clear communication, and measurable outcomes.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn primary" href="#contact">
+                <i data-lucide="sparkles" style="width:18px;height:18px"></i>
+                Request a quote
+              </a>
+              <a class="btn" href="#services">
+                <i data-lucide="arrow-down" style="width:18px;height:18px"></i>
+                Explore services
+              </a>
+            </div>
+
+            <div class="pillRow" aria-label="Capabilities">
+              <span class="pill">Development</span>
+              <span class="pill">Cybersecurity</span>
+              <span class="pill">Consulting</span>
+              <span class="pill">Integration</span>
+              <span class="pill">Support</span>
+              <span class="pill">Pre-sales</span>
+            </div>
+
+            <div style="margin-top:6px" class="small">
+              Photo: Unsplash (free license)
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <h3 style="margin:0 0 10px;">What we do</h3>
-          <ul class="list">
-            <li><b>Security</b> — Zero Trust, SASE / ZTNA, cloud & network hardening</li>
-            <li><b>Engineering</b> — web apps, APIs, automation, integrations</li>
-            <li><b>Advisory</b> — IT strategy, assessments, architecture reviews</li>
-            <li><b>Operations</b> — L2/L3 support, runbooks, optimization</li>
-            <li><b>Pre-sales</b> — workshops, demos, POCs, technical documentation</li>
+        <div class="card sideCard">
+          <h3>What we do</h3>
+          <p class="muted" style="margin:0 0 8px;">Practical, senior-level IT execution.</p>
+
+          <ul class="sideList">
+            <li>
+              <div class="iconBox"><i data-lucide="shield" style="width:18px;height:18px"></i></div>
+              <div><b>Security</b><div class="small">Zero Trust, SASE / ZTNA, cloud & network hardening</div></div>
+            </li>
+            <li>
+              <div class="iconBox"><i data-lucide="code-2" style="width:18px;height:18px"></i></div>
+              <div><b>Engineering</b><div class="small">Web apps, APIs, automation, integrations</div></div>
+            </li>
+            <li>
+              <div class="iconBox"><i data-lucide="sliders" style="width:18px;height:18px"></i></div>
+              <div><b>Advisory</b><div class="small">Strategy, assessments, architecture reviews</div></div>
+            </li>
+            <li>
+              <div class="iconBox"><i data-lucide="headset" style="width:18px;height:18px"></i></div>
+              <div><b>Operations</b><div class="small">L2/L3 support, runbooks, optimization</div></div>
+            </li>
           </ul>
 
           <div class="kpis">
-            <div class="kpi"><b>Fast delivery</b><div class="small">Focused, outcome-driven engagements</div></div>
-            <div class="kpi"><b>Security-first</b><div class="small">Best practices by default</div></div>
-            <div class="kpi"><b>Clear communication</b><div class="small">No surprises, no jargon</div></div>
-            <div class="kpi"><b>Flexible</b><div class="small">Project or retainer models</div></div>
+            <div class="kpi"><b>Fast delivery</b><span>Outcome-driven engagements</span></div>
+            <div class="kpi"><b>Security-first</b><span>Best practices by default</span></div>
+            <div class="kpi"><b>Clear comms</b><span>No surprises, no jargon</span></div>
+            <div class="kpi"><b>Flexible</b><span>Project or retainer</span></div>
           </div>
         </div>
+
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section>
+      <div class="titleRow">
+        <h2>Trusted approach</h2>
+        <p class="muted" style="margin:0">Replace these with real client logos later.</p>
+      </div>
+      <div class="trust">
+        <span class="logoChip">Enterprise</span>
+        <span class="logoChip">Cloud</span>
+        <span class="logoChip">Security</span>
+        <span class="logoChip">SaaS</span>
+        <span class="logoChip">Industrial</span>
+        <span class="logoChip">Finance</span>
       </div>
     </section>
 
     <!-- SERVICES -->
     <section id="services">
-      <div class="section-title">
+      <div class="titleRow">
         <h2>Services</h2>
-        <p>Everything you need to deliver and operate modern IT.</p>
+        <p class="muted" style="margin:0">Everything you need to build and operate modern IT.</p>
       </div>
 
-      <div class="grid">
-        <div class="card service">
+      <div class="grid3">
+        <div class="card serviceCard">
+          <div class="serviceMedia" style="background-image:
+            url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=80');"></div>
           <h3>Cybersecurity</h3>
           <p>Assess, design, and implement strong security foundations.</p>
           <ul class="list">
@@ -200,9 +429,15 @@
             <li>Cloud security & hardening</li>
             <li>Policies, standards, and governance</li>
           </ul>
+          <div class="tagRow">
+            <span class="tag">Zero Trust</span><span class="tag">SASE</span><span class="tag">Cloud</span>
+          </div>
+          <div class="small" style="margin-top:10px">Photo: Unsplash</div>
         </div>
 
-        <div class="card service">
+        <div class="card serviceCard">
+          <div class="serviceMedia" style="background-image:
+            url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1600&q=80');"></div>
           <h3>Software Development</h3>
           <p>Build robust applications and integrations that scale.</p>
           <ul class="list">
@@ -212,9 +447,15 @@
             <li>System integration</li>
             <li>Testing, CI/CD support</li>
           </ul>
+          <div class="tagRow">
+            <span class="tag">Web</span><span class="tag">APIs</span><span class="tag">Automation</span>
+          </div>
+          <div class="small" style="margin-top:10px">Photo: Unsplash</div>
         </div>
 
-        <div class="card service">
+        <div class="card serviceCard">
+          <div class="serviceMedia" style="background-image:
+            url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80');"></div>
           <h3>Consulting & Delivery</h3>
           <p>From strategy to execution, with measurable results.</p>
           <ul class="list">
@@ -224,54 +465,99 @@
             <li>Operational readiness</li>
             <li>Documentation & knowledge transfer</li>
           </ul>
+          <div class="tagRow">
+            <span class="tag">Strategy</span><span class="tag">POCs</span><span class="tag">Delivery</span>
+          </div>
+          <div class="small" style="margin-top:10px">Photo: Unsplash</div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT / WHY -->
-    <section class="split" id="about">
-      <div class="card">
-        <div class="section-title" style="margin-bottom:10px;">
-          <h2>About Meroxa</h2>
-          <p>Pragmatic experts you can trust.</p>
+    <!-- CASE STUDIES -->
+    <section id="cases">
+      <div class="titleRow">
+        <h2>Case studies</h2>
+        <p class="muted" style="margin:0">Short, believable outcomes (you can customize).</p>
+      </div>
+
+      <div class="cases">
+        <div class="card caseCard">
+          <div class="caseTop" style="background-image:
+            url('https://images.unsplash.com/photo-1510519138101-570d1dca3d66?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="caseBody">
+            <b>Zero Trust rollout for a multi-site enterprise</b>
+            <p class="muted" style="margin:8px 0 0;">
+              Defined success criteria, executed a phased ZTNA deployment, and improved access security
+              while reducing operational friction.
+            </p>
+            <div class="tagRow">
+              <span class="tag">ZTNA</span><span class="tag">SASE</span><span class="tag">Identity</span>
+            </div>
+          </div>
         </div>
-        <p style="color:var(--muted); margin:0;">
-          Meroxa is an IT services company focused on secure delivery.
-          We help teams ship software, strengthen cybersecurity, integrate platforms,
-          and keep environments reliable in production.
-        </p>
-        <div class="pillrow" style="margin-top:14px;">
-          <span class="pill">Enterprise mindset</span>
-          <span class="pill">Hands-on execution</span>
-          <span class="pill">Documentation-first</span>
-          <span class="pill">Quality & security</span>
+
+        <div class="card caseCard">
+          <div class="caseTop" style="background-image:
+            url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="caseBody">
+            <b>API + automation to accelerate operations</b>
+            <p class="muted" style="margin:8px 0 0;">
+              Built automation workflows and integrations to reduce manual steps,
+              improve reliability, and speed up delivery cycles.
+            </p>
+            <div class="tagRow">
+              <span class="tag">APIs</span><span class="tag">Automation</span><span class="tag">DevOps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="small" style="margin-top:10px">Photos: Unsplash</div>
+    </section>
+
+    <!-- ABOUT / WHY -->
+    <section id="about" class="split">
+      <div class="card">
+        <div class="aboutMedia"></div>
+        <div style="margin-top:14px">
+          <h2>About Meroxa</h2>
+          <p class="muted" style="margin:10px 0 0;">
+            Meroxa is an IT services company focused on secure delivery.
+            We help teams ship software, strengthen cybersecurity, integrate platforms,
+            and keep environments reliable in production.
+          </p>
+          <div class="tagRow" style="margin-top:12px">
+            <span class="tag">Enterprise mindset</span>
+            <span class="tag">Hands-on execution</span>
+            <span class="tag">Documentation-first</span>
+            <span class="tag">Security by design</span>
+          </div>
         </div>
       </div>
 
-      <div class="card" id="why">
-        <div class="section-title" style="margin-bottom:10px;">
-          <h2>Why Meroxa</h2>
-          <p>What you get.</p>
-        </div>
+      <div class="card">
+        <h2>Why Meroxa</h2>
         <ul class="list">
           <li><b>Clarity</b> — simple plans, clear milestones, visible progress.</li>
           <li><b>Speed</b> — quick onboarding and efficient execution.</li>
           <li><b>Quality</b> — robust, maintainable, secure-by-design work.</li>
           <li><b>Ownership</b> — we care about outcomes, not just tasks.</li>
         </ul>
+        <div style="margin-top:14px" class="small">
+          Want it even more “big company”? Add: certifications, partner badges, and a proper brand kit (logo + typography).
+        </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
-      <div class="section-title">
+      <div class="titleRow">
         <h2>Contact</h2>
-        <p>Tell us what you need — we’ll reply quickly.</p>
+        <p class="muted" style="margin:0">Tell us what you need — we’ll reply quickly.</p>
       </div>
 
       <div class="contact">
         <div class="card">
-          <!-- NOTE: This form is static. To make it work, use Formspree/Netlify Forms or a backend. -->
+          <!-- Simple mailto. For a real form later: Netlify Forms or Formspree -->
           <form action="mailto:contact@meroxa.com" method="post" enctype="text/plain">
             <label for="name">Name</label>
             <input id="name" name="name" placeholder="Your name" required />
@@ -285,13 +571,19 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" placeholder="Briefly describe your project or need..." required></textarea>
 
-            <div class="cta" style="margin-top:14px;">
-              <button class="btn primary" type="submit">Send</button>
-              <a class="btn" href="#services">View services</a>
+            <div class="ctaRow" style="margin-top:14px">
+              <button class="btn primary" type="submit">
+                <i data-lucide="send" style="width:18px;height:18px"></i>
+                Send
+              </button>
+              <a class="btn" href="#services">
+                <i data-lucide="layers" style="width:18px;height:18px"></i>
+                View services
+              </a>
             </div>
 
             <p class="small" style="margin-top:12px;">
-              Tip: Replace <b>contact@meroxa.com</b> with your real business email.
+              Replace <b>contact@meroxa.com</b> with your real business email.
             </p>
           </form>
         </div>
@@ -305,10 +597,14 @@
             <li><b>Location:</b> Remote / On-site (as needed)</li>
           </ul>
 
-          <div style="margin-top:14px;">
-            <p class="small" style="margin:0;">
-              Want a logo + brand colors + favicon? I can generate a consistent mini brand kit for Meroxa.
-            </p>
+          <div class="tagRow" style="margin-top:14px">
+            <span class="tag">Security</span>
+            <span class="tag">Engineering</span>
+            <span class="tag">Consulting</span>
+          </div>
+
+          <div style="margin-top:14px" class="small">
+            Next “big-company” upgrades: custom domain, real form backend, and Google Analytics.
           </div>
         </div>
       </div>
@@ -317,15 +613,14 @@
     <footer class="wrap">
       <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;">
         <div>© <span id="y"></span> Meroxa. All rights reserved.</div>
-        <div class="small">
-          <a href="#top">Back to top</a>
-        </div>
+        <div class="small"><a href="#top">Back to top</a></div>
       </div>
     </footer>
   </main>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+    lucide.createIcons();
   </script>
 </body>
 </html>
