@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Meroxa — Secure Excellence. Delivered.</title>
+  <meta name="description" content="Contact Meroxa for cybersecurity, development and IT consulting." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Meroxa logo" /></a>
+      <nav class="links">
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.linkedin.com/in/meroxa-sarl-43b1a03b1" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+      <a class="btn primary" href="contact.html">Get in touch</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section">
+      <div class="card">
+        <div class="badge"><span class="dot"></span> Contact</div>
+        <h1 style="margin-top:10px">Let’s discuss your needs</h1>
+        <p class="muted" style="margin:10px 0 0; font-size:18px; max-width:70ch">
+          Send a message and we’ll reply quickly. You can also reach us via LinkedIn.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid2">
+        <div class="card">
+          <!-- Simple mailto. For a real form later: Netlify Forms or Formspree -->
+          <form action="mailto:contact@meroxa.com" method="post" enctype="text/plain">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+
+            <label for="company">Company (optional)</label>
+            <input id="company" name="company" placeholder="Company name" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Describe your project or need..." required></textarea>
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px">
+              <button class="btn primary" type="submit">Send</button>
+              <a class="btn" href="services.html">View services</a>
+            </div>
+
+            <p class="small" style="margin-top:12px">
+              Replace <b>contact@meroxa.com</b> with your real business email.
+            </p>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2 style="font-size:22px;margin:0 0 8px">Business info</h2>
+          <ul class="list">
+            <li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/meroxa-sarl-43b1a03b1" target="_blank" rel="noopener">Meroxa SARL</a></li>
+            <li><b>Engagements:</b> Project-based or retainer</li>
+            <li><b>Availability:</b> Mon–Fri</li>
+            <li><b>Delivery:</b> Remote / On-site (as needed)</li>
+          </ul>
+
+          <div style="margin-top:14px" class="pillRow">
+            <span class="pill">Security</span>
+            <span class="pill">Engineering</span>
+            <span class="pill">Consulting</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="wrap">
+      <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+        <div>© <span id="y"></span> Meroxa. All rights reserved.</div>
+        <div class="small"><a href="index.html">Home</a> • <a href="services.html">Services</a></div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
